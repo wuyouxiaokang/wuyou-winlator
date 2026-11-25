@@ -1,0 +1,168 @@
+.class public final enum Lcom/wuyouwin/xserver/Visual$Type;
+.super Ljava/lang/Enum;
+.source "Visual.java"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/wuyouwin/xserver/Visual;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x4019
+    name = "Type"
+.end annotation
+
+
+# static fields
+.field private static final synthetic $VALUES:[Lcom/wuyouwin/xserver/Visual$Type;
+
+.field public static final enum DIRECT_COLOR:Lcom/wuyouwin/xserver/Visual$Type;
+
+.field public static final enum GRAYSCALE:Lcom/wuyouwin/xserver/Visual$Type;
+
+.field public static final enum PSEUDO_COLOR:Lcom/wuyouwin/xserver/Visual$Type;
+
+.field public static final enum STATIC_COLOR:Lcom/wuyouwin/xserver/Visual$Type;
+
+.field public static final enum STATIC_GRAY:Lcom/wuyouwin/xserver/Visual$Type;
+
+.field public static final enum TRUE_COLOR:Lcom/wuyouwin/xserver/Visual$Type;
+
+
+# direct methods
+.method private static synthetic $values()[Lcom/wuyouwin/xserver/Visual$Type;
+    .locals 6
+
+    .line 4
+    sget-object v0, Lcom/wuyouwin/xserver/Visual$Type;->STATIC_GRAY:Lcom/wuyouwin/xserver/Visual$Type;
+
+    sget-object v1, Lcom/wuyouwin/xserver/Visual$Type;->GRAYSCALE:Lcom/wuyouwin/xserver/Visual$Type;
+
+    sget-object v2, Lcom/wuyouwin/xserver/Visual$Type;->STATIC_COLOR:Lcom/wuyouwin/xserver/Visual$Type;
+
+    sget-object v3, Lcom/wuyouwin/xserver/Visual$Type;->PSEUDO_COLOR:Lcom/wuyouwin/xserver/Visual$Type;
+
+    sget-object v4, Lcom/wuyouwin/xserver/Visual$Type;->TRUE_COLOR:Lcom/wuyouwin/xserver/Visual$Type;
+
+    sget-object v5, Lcom/wuyouwin/xserver/Visual$Type;->DIRECT_COLOR:Lcom/wuyouwin/xserver/Visual$Type;
+
+    filled-new-array/range {v0 .. v5}, [Lcom/wuyouwin/xserver/Visual$Type;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method static constructor <clinit>()V
+    .locals 3
+
+    .line 4
+    new-instance v0, Lcom/wuyouwin/xserver/Visual$Type;
+
+    const-string v1, "STATIC_GRAY"
+
+    const/4 v2, 0x0
+
+    invoke-direct {v0, v1, v2}, Lcom/wuyouwin/xserver/Visual$Type;-><init>(Ljava/lang/String;I)V
+
+    sput-object v0, Lcom/wuyouwin/xserver/Visual$Type;->STATIC_GRAY:Lcom/wuyouwin/xserver/Visual$Type;
+
+    new-instance v0, Lcom/wuyouwin/xserver/Visual$Type;
+
+    const-string v1, "GRAYSCALE"
+
+    const/4 v2, 0x1
+
+    invoke-direct {v0, v1, v2}, Lcom/wuyouwin/xserver/Visual$Type;-><init>(Ljava/lang/String;I)V
+
+    sput-object v0, Lcom/wuyouwin/xserver/Visual$Type;->GRAYSCALE:Lcom/wuyouwin/xserver/Visual$Type;
+
+    new-instance v0, Lcom/wuyouwin/xserver/Visual$Type;
+
+    const-string v1, "STATIC_COLOR"
+
+    const/4 v2, 0x2
+
+    invoke-direct {v0, v1, v2}, Lcom/wuyouwin/xserver/Visual$Type;-><init>(Ljava/lang/String;I)V
+
+    sput-object v0, Lcom/wuyouwin/xserver/Visual$Type;->STATIC_COLOR:Lcom/wuyouwin/xserver/Visual$Type;
+
+    new-instance v0, Lcom/wuyouwin/xserver/Visual$Type;
+
+    const-string v1, "PSEUDO_COLOR"
+
+    const/4 v2, 0x3
+
+    invoke-direct {v0, v1, v2}, Lcom/wuyouwin/xserver/Visual$Type;-><init>(Ljava/lang/String;I)V
+
+    sput-object v0, Lcom/wuyouwin/xserver/Visual$Type;->PSEUDO_COLOR:Lcom/wuyouwin/xserver/Visual$Type;
+
+    new-instance v0, Lcom/wuyouwin/xserver/Visual$Type;
+
+    const-string v1, "TRUE_COLOR"
+
+    const/4 v2, 0x4
+
+    invoke-direct {v0, v1, v2}, Lcom/wuyouwin/xserver/Visual$Type;-><init>(Ljava/lang/String;I)V
+
+    sput-object v0, Lcom/wuyouwin/xserver/Visual$Type;->TRUE_COLOR:Lcom/wuyouwin/xserver/Visual$Type;
+
+    new-instance v0, Lcom/wuyouwin/xserver/Visual$Type;
+
+    const-string v1, "DIRECT_COLOR"
+
+    const/4 v2, 0x5
+
+    invoke-direct {v0, v1, v2}, Lcom/wuyouwin/xserver/Visual$Type;-><init>(Ljava/lang/String;I)V
+
+    sput-object v0, Lcom/wuyouwin/xserver/Visual$Type;->DIRECT_COLOR:Lcom/wuyouwin/xserver/Visual$Type;
+
+    invoke-static {}, Lcom/wuyouwin/xserver/Visual$Type;->$values()[Lcom/wuyouwin/xserver/Visual$Type;
+
+    move-result-object v0
+
+    sput-object v0, Lcom/wuyouwin/xserver/Visual$Type;->$VALUES:[Lcom/wuyouwin/xserver/Visual$Type;
+
+    return-void
+.end method
+
+.method private constructor <init>(Ljava/lang/String;I)V
+    .locals 0
+
+    .line 4
+    invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
+
+    return-void
+.end method
+
+.method public static valueOf(Ljava/lang/String;)Lcom/wuyouwin/xserver/Visual$Type;
+    .locals 1
+    .param p0, "name"    # Ljava/lang/String;
+
+    .line 4
+    const-class v0, Lcom/wuyouwin/xserver/Visual$Type;
+
+    invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/wuyouwin/xserver/Visual$Type;
+
+    return-object v0
+.end method
+
+.method public static values()[Lcom/wuyouwin/xserver/Visual$Type;
+    .locals 1
+
+    .line 4
+    sget-object v0, Lcom/wuyouwin/xserver/Visual$Type;->$VALUES:[Lcom/wuyouwin/xserver/Visual$Type;
+
+    invoke-virtual {v0}, [Lcom/wuyouwin/xserver/Visual$Type;->clone()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, [Lcom/wuyouwin/xserver/Visual$Type;
+
+    return-object v0
+.end method

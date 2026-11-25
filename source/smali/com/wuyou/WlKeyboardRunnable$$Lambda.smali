@@ -11,7 +11,7 @@
 
 
 # instance fields
-.field private final activity:Lcom/winlator/XServerDisplayActivity;
+.field private final activity:Lcom/wuyouwin/XServerDisplayActivity;
 
 
 # direct methods
@@ -25,12 +25,12 @@
     return-void
 .end method
 
-.method public constructor <init>(Lcom/wuyou/WlKeyboardRunnable;Lcom/winlator/XServerDisplayActivity;)V
+.method public constructor <init>(Lcom/wuyou/WlKeyboardRunnable;Lcom/wuyouwin/XServerDisplayActivity;)V
     .locals 0
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    iput-object p2, p0, Lcom/wuyou/WlKeyboardRunnable$$Lambda;->activity:Lcom/winlator/XServerDisplayActivity;
+    iput-object p2, p0, Lcom/wuyou/WlKeyboardRunnable$$Lambda;->activity:Lcom/wuyouwin/XServerDisplayActivity;
 
     return-void
 .end method
@@ -47,9 +47,9 @@
     return-void
 
     :cond_0
-    iget-object v0, p0, Lcom/wuyou/WlKeyboardRunnable$$Lambda;->activity:Lcom/winlator/XServerDisplayActivity;
+    iget-object v0, p0, Lcom/wuyou/WlKeyboardRunnable$$Lambda;->activity:Lcom/wuyouwin/XServerDisplayActivity;
 
-    invoke-static {v0}, Lcom/wuyou/WlKeyboardPrompt;->show(Lcom/winlator/XServerDisplayActivity;)V
+    invoke-static {v0}, Lcom/wuyou/WlKeyboardPrompt;->show(Lcom/wuyouwin/XServerDisplayActivity;)V
 
     return-void
 .end method

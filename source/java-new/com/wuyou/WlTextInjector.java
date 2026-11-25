@@ -1,10 +1,10 @@
 package com.wuyou;
 
-import com.winlator.xserver.Keyboard;
-import com.winlator.xserver.Window;
-import com.winlator.xserver.WindowManager;
-import com.winlator.xserver.XKeycode;
-import com.winlator.xserver.XServer;
+import com.wuyouwin.xserver.Keyboard;
+import com.wuyouwin.xserver.Window;
+import com.wuyouwin.xserver.WindowManager;
+import com.wuyouwin.xserver.XKeycode;
+import com.wuyouwin.xserver.XServer;
 
 import java.util.List;
 

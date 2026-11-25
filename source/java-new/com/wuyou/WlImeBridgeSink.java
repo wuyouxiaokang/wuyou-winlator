@@ -1,6 +1,6 @@
 package com.wuyou;
 
-import com.winlator.XServerDisplayActivity;
+import com.wuyouwin.XServerDisplayActivity;
 
 import java.lang.ref.WeakReference;
 

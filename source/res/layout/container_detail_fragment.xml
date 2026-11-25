@@ -58,13 +58,13 @@
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/background" />
                         <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
                             <Spinner android:entries="@array/desktop_background_type_entries" android:id="@id/SDesktopBackgroundType" android:layout_width="0.0dip" android:layout_weight="1.0" style="@style/ComboBox" />
-                            <com.winlator.widget.ColorPickerView android:id="@id/CPVDesktopBackgroundColor" android:visibility="gone" android:layout_width="84.0dip" android:layout_height="wrap_content" />
-                            <com.winlator.widget.ImagePickerView android:id="@id/IPVDesktopBackgroundImage" android:visibility="gone" android:layout_width="84.0dip" android:layout_height="wrap_content" />
+                            <com.wuyouwin.widget.ColorPickerView android:id="@id/CPVDesktopBackgroundColor" android:visibility="gone" android:layout_width="84.0dip" android:layout_height="wrap_content" />
+                            <com.wuyouwin.widget.ImagePickerView android:id="@id/IPVDesktopBackgroundImage" android:visibility="gone" android:layout_width="84.0dip" android:layout_height="wrap_content" />
                         </LinearLayout>
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/system_font" />
                         <Spinner android:entries="@array/system_font_entries" android:id="@id/SSystemFont" android:layout_width="fill_parent" style="@style/ComboBox" />
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dpi_font_size" />
-                        <com.winlator.widget.SeekBar android:id="@id/SBLogPixels" android:layout_width="fill_parent" android:layout_height="wrap_content" app:maxValue="240" app:minValue="96" app:step="24" app:suffix=" dpi" />
+                        <com.wuyouwin.widget.SeekBar android:id="@id/SBLogPixels" android:layout_width="fill_parent" android:layout_height="wrap_content" app:maxValue="240" app:minValue="96" app:step="24" app:suffix=" dpi" />
                     </LinearLayout>
                     <TextView android:text="@string/desktop" style="@style/FieldSetLabel" />
                 </FrameLayout>
@@ -87,7 +87,7 @@
                 </FrameLayout>
             </LinearLayout>
             <LinearLayout android:orientation="vertical" android:id="@id/LLTabEnvVars" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <com.winlator.widget.EnvVarsView android:id="@id/EnvVarsView" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                <com.wuyouwin.widget.EnvVarsView android:id="@id/EnvVarsView" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
                 <View style="@style/HorizontalLine" />
                 <Button android:layout_gravity="center_horizontal" android:id="@id/BTAddEnvVar" android:layout_width="160.0dip" android:layout_height="wrap_content" android:text="@string/add" style="@style/ButtonNeutral" />
             </LinearLayout>
@@ -119,9 +119,9 @@
                     <TextView android:text="@string/system" style="@style/FieldSetLabel" />
                 </FrameLayout>
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/processor_affinity" />
-                <com.winlator.widget.CPUListView android:gravity="center_horizontal" android:id="@id/CPUListView" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" />
+                <com.wuyouwin.widget.CPUListView android:gravity="center_horizontal" android:id="@id/CPUListView" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/processor_affinity_32_bit_apps" />
-                <com.winlator.widget.CPUListView android:gravity="center_horizontal" android:id="@id/CPUListViewWoW64" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" />
+                <com.wuyouwin.widget.CPUListView android:gravity="center_horizontal" android:id="@id/CPUListViewWoW64" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

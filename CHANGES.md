@@ -92,3 +92,28 @@
 ## 五、未修改的文件
 
 `smlai/` 下除上表所列之外的所有文件，均与上游分发包保持一致，未作修改。
+
+---
+
+## 六、包名变更（v15.1）
+
+自 v15.1 起，包名由 `com.winlator` 改为 **`com.wuyouwin`**，原因：
+
+1. 避免与上游 Winlator 及其他分支的包名冲突
+2. 遵循 GPL/LGPL 项目「衍生版不应冒用原项目身份」的惯例
+3. 便于用户区分官方版与本修改版
+
+迁移范围（全部已完成）：
+
+| 项 | 变更 |
+|---|---|
+| `AndroidManifest.xml` | `package="com.wuyouwin"`，所有组件名同步 |
+| smali 源码 | `com/winlator/` → `com/wuyouwin/`（3213 个文件） |
+| 资源布局 | 自定义 View 全限定名同步替换 |
+| FileProvider authority | `com.wuyouwin.FileProvider` |
+| 通知 action | `com.wuyouwin.action.ENSURE_FOREGROUND` |
+
+**未变更**：`/data/data/com.winlator/storage` 这一内部路径字符串保持不变，
+用于兼容已存在的容器数据（升级时不丢失）。
+
+> 注意：由于包名和签名均与原版不同，安装时需先卸载旧版 `com.winlator`。
