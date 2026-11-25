@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/LLTitleBar" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:id="@id/TVTitle" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <ImageButton android:id="@id/BTAdd" android:visibility="gone" android:layout_margin="2.0dip" android:src="@drawable/icon_add" style="@style/ListMenuButton" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Spinner android:entries="@array/binding_type_entries" android:id="@id/SBindingType" android:layout_width="140.0dip" style="@style/ComboBox" />
+        <Spinner android:id="@id/SBinding" android:layout_width="0.0dip" android:layout_weight="1.0" style="@style/ComboBox" />
+    </LinearLayout>
+</LinearLayout>

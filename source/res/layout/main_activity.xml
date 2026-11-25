@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout android:id="@id/DrawerLayout" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:background="@drawable/wl_root_background" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <androidx.appcompat.widget.Toolbar android:id="@id/Toolbar" android:layout_width="fill_parent" android:layout_height="?actionBarSize" app:layout_scrollFlags="enterAlways|scroll" app:title="@string/app_name" />
+        <FrameLayout android:id="@id/FLFragmentContainer" android:layout_width="fill_parent" android:layout_height="fill_parent" app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    </LinearLayout>
+    <com.google.android.material.navigation.NavigationView android:layout_gravity="start" android:id="@id/NavigationView" android:background="@drawable/wl_nav_background" android:fitsSystemWindows="true" android:layout_width="wrap_content" android:layout_height="fill_parent" app:headerLayout="@layout/main_menu_header" app:itemBackground="@drawable/wl_nav_item_background" app:itemHorizontalPadding="18.0dip" app:itemIconPadding="14.0dip" app:itemIconTint="@color/wl_nav_item_tint" app:itemTextColor="@color/wl_nav_item_tint" app:menu="@menu/main_menu" />
+</androidx.drawerlayout.widget.DrawerLayout>

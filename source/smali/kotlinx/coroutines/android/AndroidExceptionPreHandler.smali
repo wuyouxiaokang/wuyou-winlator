@@ -1,0 +1,220 @@
+.class public final Lkotlinx/coroutines/android/AndroidExceptionPreHandler;
+.super Lkotlin/coroutines/AbstractCoroutineContextElement;
+.source "AndroidExceptionPreHandler.kt"
+
+# interfaces
+.implements Lkotlinx/coroutines/CoroutineExceptionHandler;
+
+
+# annotations
+.annotation build Landroidx/annotation/Keep;
+.end annotation
+
+
+# instance fields
+.field private volatile _preHandler:Ljava/lang/Object;
+
+
+# direct methods
+.method public constructor <init>()V
+    .locals 1
+
+    .line 15
+    sget-object v0, Lkotlinx/coroutines/CoroutineExceptionHandler;->Key:Lkotlinx/coroutines/CoroutineExceptionHandler$Key;
+
+    invoke-direct {p0, v0}, Lkotlin/coroutines/AbstractCoroutineContextElement;-><init>(Lkotlin/coroutines/CoroutineContext$Key;)V
+
+    .line 18
+    iput-object p0, p0, Lkotlinx/coroutines/android/AndroidExceptionPreHandler;->_preHandler:Ljava/lang/Object;
+
+    .line 14
+    return-void
+.end method
+
+.method private final preHandler()Ljava/lang/reflect/Method;
+    .locals 7
+
+    .line 22
+    iget-object v0, p0, Lkotlinx/coroutines/android/AndroidExceptionPreHandler;->_preHandler:Ljava/lang/Object;
+
+    .line 23
+    .local v0, "current":Ljava/lang/Object;
+    if-eq v0, p0, :cond_0
+
+    move-object v1, v0
+
+    check-cast v1, Ljava/lang/reflect/Method;
+
+    return-object v1
+
+    .line 24
+    :cond_0
+    const/4 v1, 0x0
+
+    :try_start_0
+    const-class v2, Ljava/lang/Thread;
+
+    .line 25
+    const-string v3, "getUncaughtExceptionPreHandler"
+
+    const/4 v4, 0x0
+
+    new-array v5, v4, [Ljava/lang/Class;
+
+    invoke-virtual {v2, v3, v5}, Ljava/lang/Class;->getDeclaredMethod(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+
+    move-result-object v2
+
+    move-object v3, v2
+
+    .local v3, "it":Ljava/lang/reflect/Method;
+    const/4 v5, 0x0
+
+    .line 26
+    .local v5, "$i$a$-takeIf-AndroidExceptionPreHandler$preHandler$declared$1":I
+    invoke-virtual {v3}, Ljava/lang/reflect/Method;->getModifiers()I
+
+    move-result v6
+
+    invoke-static {v6}, Ljava/lang/reflect/Modifier;->isPublic(I)Z
+
+    move-result v6
+
+    if-eqz v6, :cond_1
+
+    invoke-virtual {v3}, Ljava/lang/reflect/Method;->getModifiers()I
+
+    move-result v6
+
+    invoke-static {v6}, Ljava/lang/reflect/Modifier;->isStatic(I)Z
+
+    move-result v6
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    if-eqz v6, :cond_1
+
+    const/4 v4, 0x1
+
+    goto :goto_0
+
+    .line 28
+    .end local v3    # "it":Ljava/lang/reflect/Method;
+    .end local v5    # "$i$a$-takeIf-AndroidExceptionPreHandler$preHandler$declared$1":I
+    :catchall_0
+    move-exception v2
+
+    goto :goto_1
+
+    .line 25
+    :cond_1
+    :goto_0
+    if-eqz v4, :cond_2
+
+    move-object v1, v2
+
+    goto :goto_2
+
+    .line 28
+    :goto_1
+    nop
+
+    .line 29
+    .local v2, "e":Ljava/lang/Throwable;
+    nop
+
+    .line 24
+    .end local v2    # "e":Ljava/lang/Throwable;
+    :cond_2
+    :goto_2
+    nop
+
+    .line 31
+    .local v1, "declared":Ljava/lang/reflect/Method;
+    iput-object v1, p0, Lkotlinx/coroutines/android/AndroidExceptionPreHandler;->_preHandler:Ljava/lang/Object;
+
+    .line 32
+    return-object v1
+.end method
+
+
+# virtual methods
+.method public handleException(Lkotlin/coroutines/CoroutineContext;Ljava/lang/Throwable;)V
+    .locals 3
+    .param p1, "context"    # Lkotlin/coroutines/CoroutineContext;
+    .param p2, "exception"    # Ljava/lang/Throwable;
+
+    .line 49
+    sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
+
+    const/16 v1, 0x1c
+
+    const/4 v2, 0x0
+
+    if-ge v0, v1, :cond_0
+
+    const/4 v0, 0x1
+
+    goto :goto_0
+
+    :cond_0
+    move v0, v2
+
+    :goto_0
+    if-eqz v0, :cond_4
+
+    .line 50
+    invoke-direct {p0}, Lkotlinx/coroutines/android/AndroidExceptionPreHandler;->preHandler()Ljava/lang/reflect/Method;
+
+    move-result-object v0
+
+    const/4 v1, 0x0
+
+    if-nez v0, :cond_1
+
+    move-object v0, v1
+
+    goto :goto_1
+
+    :cond_1
+    new-array v2, v2, [Ljava/lang/Object;
+
+    invoke-virtual {v0, v1, v2}, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    :goto_1
+    instance-of v2, v0, Ljava/lang/Thread$UncaughtExceptionHandler;
+
+    if-eqz v2, :cond_2
+
+    move-object v1, v0
+
+    check-cast v1, Ljava/lang/Thread$UncaughtExceptionHandler;
+
+    .line 51
+    :cond_2
+    nop
+
+    .line 50
+    if-nez v1, :cond_3
+
+    .line 51
+    goto :goto_2
+
+    .line 50
+    :cond_3
+    nop
+
+    .line 51
+    invoke-static {}, Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+
+    move-result-object v0
+
+    invoke-interface {v1, v0, p2}, Ljava/lang/Thread$UncaughtExceptionHandler;->uncaughtException(Ljava/lang/Thread;Ljava/lang/Throwable;)V
+
+    .line 53
+    :cond_4
+    :goto_2
+    return-void
+.end method

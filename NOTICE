@@ -1,0 +1,27 @@
+无忧 Winlator（无忧win虚拟机）
+Copyright (C) 2026 wuyouxiaokang <3266636647@qq.com>
+
+本软件基于 Winlator 修改而来：
+  Winlator
+  Copyright (c) BrunoSX / brunodev85 及其贡献者
+  https://github.com/brunodev85/winlator
+
+本软件为独立的非官方修改版（fork），
+与 Winlator 原作者无任何隶属、合作或授权关系，
+不代表上游立场，上游亦不对本软件提供任何支持或担保。
+
+本软件依据 GNU Lesser General Public License v2.1 分发，
+完整许可证文本见同目录 LICENSE 文件。
+
+本软件按「现状」提供，不附带任何明示或暗示的担保，
+包括但不限于对适销性、特定用途适用性的担保。
+在任何情况下，作者或版权持有人均不对因本软件或本软件的使用
+或其他交易而产生的任何索赔、损害或其他责任负责。
+
+使用本软件运行 Windows 应用程序时，相关软件的授权
+由使用者自行负责取得。
+
+本项目包含的第三方组件及其许可证，详见 THIRD-PARTY-LICENSES.md。
+
+源代码获取：
+  https://github.com/wuyouxiaokang/wuyou-winlator

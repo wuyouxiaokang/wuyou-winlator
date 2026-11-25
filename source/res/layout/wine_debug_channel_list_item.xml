@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginRight="8.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="16.0dip" android:textStyle="bold" android:textColor="?colorPrimaryVariant" android:gravity="center_vertical" android:id="@id/TextView" android:background="@drawable/left_side_button" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginRight="2.0dip" />
+    <ImageView android:id="@id/BTAdd" android:visibility="gone" android:layout_marginRight="4.0dip" android:src="@drawable/icon_add" style="@style/LeftSideButton" />
+    <ImageView android:id="@id/BTReset" android:visibility="gone" android:src="@drawable/icon_reset" style="@style/RightSideButton" />
+    <ImageView android:id="@id/BTRemove" android:src="@drawable/icon_remove2" style="@style/RightSideButton" />
+</LinearLayout>

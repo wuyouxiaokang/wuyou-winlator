@@ -1,0 +1,902 @@
+.class public Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;
+.super Ljava/io/FilterOutputStream;
+.source "ZstdOutputStreamNoFinalizer.java"
+
+
+# static fields
+.field private static final dstSize:I
+
+
+# instance fields
+.field private final bufferPool:Lcom/github/luben/zstd/BufferPool;
+
+.field private closeFrameOnFlush:Z
+
+.field private final dst:[B
+
+.field private final dstByteBuffer:Ljava/nio/ByteBuffer;
+
+.field private dstPos:J
+
+.field private frameClosed:Z
+
+.field private isClosed:Z
+
+.field private srcPos:J
+
+.field private final stream:J
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 2
+
+    .line 18
+    invoke-static {}, Lcom/github/luben/zstd/util/Native;->load()V
+
+    .line 30
+    invoke-static {}, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->recommendedCOutSize()J
+
+    move-result-wide v0
+
+    long-to-int v0, v0
+
+    sput v0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->dstSize:I
+
+    return-void
+.end method
+
+.method public constructor <init>(Ljava/io/OutputStream;Lcom/github/luben/zstd/BufferPool;)V
+    .locals 3
+    .param p1, "outStream"    # Ljava/io/OutputStream;
+    .param p2, "bufferPool"    # Lcom/github/luben/zstd/BufferPool;
+
+    .line 78
+    invoke-direct {p0, p1}, Ljava/io/FilterOutputStream;-><init>(Ljava/io/OutputStream;)V
+
+    .line 24
+    const-wide/16 v0, 0x0
+
+    iput-wide v0, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->srcPos:J
+
+    .line 25
+    iput-wide v0, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->dstPos:J
+
+    .line 29
+    const/4 v0, 0x0
+
+    iput-boolean v0, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->isClosed:Z
+
+    .line 31
+    iput-boolean v0, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->closeFrameOnFlush:Z
+
+    .line 32
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->frameClosed:Z
+
+    .line 80
+    invoke-static {}, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->createCStream()J
+
+    move-result-wide v0
+
+    iput-wide v0, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->stream:J
+
+    .line 81
+    iput-object p2, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->bufferPool:Lcom/github/luben/zstd/BufferPool;
+
+    .line 82
+    sget v0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->dstSize:I
+
+    invoke-interface {p2, v0}, Lcom/github/luben/zstd/BufferPool;->get(I)Ljava/nio/ByteBuffer;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->dstByteBuffer:Ljava/nio/ByteBuffer;
+
+    .line 83
+    iget-object v0, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->dstByteBuffer:Ljava/nio/ByteBuffer;
+
+    if-eqz v0, :cond_0
+
+    .line 86
+    iget-object v0, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->dstByteBuffer:Ljava/nio/ByteBuffer;
+
+    invoke-static {v0}, Lcom/github/luben/zstd/Zstd;->extractArray(Ljava/nio/ByteBuffer;)[B
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->dst:[B
+
+    .line 87
+    return-void
+
+    .line 84
+    :cond_0
+    new-instance v0, Ljava/io/IOException;
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "Cannot get ByteBuffer of size "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    sget v2, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->dstSize:I
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    const-string v2, " from the BufferPool"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-direct {v0, v1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+.end method
+
+.method private close(Z)V
+    .locals 6
+    .param p1, "closeParentStream"    # Z
+
+    .line 267
+    iget-boolean v0, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->isClosed:Z
+
+    if-eqz v0, :cond_0
+
+    .line 268
+    return-void
+
+    .line 271
+    :cond_0
+    const/4 v0, 0x1
+
+    :try_start_0
+    iget-boolean v1, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->frameClosed:Z
+
+    nop
+
+    if-nez v1, :cond_3
+
+    .line 275
+    :cond_1
+    iget-wide v1, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->stream:J
+
+    iget-object v3, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->dst:[B
+
+    sget v4, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->dstSize:I
+
+    invoke-direct {p0, v1, v2, v3, v4}, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->endStream(J[BI)I
+
+    move-result v1
+
+    .line 276
+    .local v1, "size":I
+    int-to-long v2, v1
+
+    invoke-static {v2, v3}, Lcom/github/luben/zstd/Zstd;->isError(J)Z
+
+    move-result v2
+
+    if-nez v2, :cond_2
+
+    .line 279
+    iget-object v2, p0, Ljava/io/FilterOutputStream;->out:Ljava/io/OutputStream;
+
+    iget-object v3, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->dst:[B
+
+    iget-wide v4, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->dstPos:J
+
+    long-to-int v4, v4
+
+    const/4 v5, 0x0
+
+    invoke-virtual {v2, v3, v5, v4}, Ljava/io/OutputStream;->write([BII)V
+
+    .line 280
+    if-gtz v1, :cond_1
+
+    goto :goto_0
+
+    .line 287
+    .end local v1    # "size":I
+    :catchall_0
+    move-exception v1
+
+    goto :goto_1
+
+    .line 277
+    .restart local v1    # "size":I
+    :cond_2
+    new-instance v2, Ljava/io/IOException;
+
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v4, "Compression error: "
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    int-to-long v4, v1
+
+    invoke-static {v4, v5}, Lcom/github/luben/zstd/Zstd;->getErrorName(J)Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-direct {v2, v3}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+
+    .end local p1    # "closeParentStream":Z
+    throw v2
+
+    .line 282
+    .end local v1    # "size":I
+    .restart local p1    # "closeParentStream":Z
+    :cond_3
+    :goto_0
+    if-eqz p1, :cond_4
+
+    .line 283
+    iget-object v1, p0, Ljava/io/FilterOutputStream;->out:Ljava/io/OutputStream;
+
+    invoke-virtual {v1}, Ljava/io/OutputStream;->close()V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 287
+    :cond_4
+    iput-boolean v0, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->isClosed:Z
+
+    .line 288
+    iget-object v0, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->bufferPool:Lcom/github/luben/zstd/BufferPool;
+
+    iget-object v1, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->dstByteBuffer:Ljava/nio/ByteBuffer;
+
+    invoke-interface {v0, v1}, Lcom/github/luben/zstd/BufferPool;->release(Ljava/nio/ByteBuffer;)V
+
+    .line 289
+    iget-wide v0, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->stream:J
+
+    invoke-static {v0, v1}, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->freeCStream(J)I
+
+    .line 290
+    nop
+
+    .line 291
+    return-void
+
+    .line 287
+    :goto_1
+    iput-boolean v0, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->isClosed:Z
+
+    .line 288
+    iget-object v0, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->bufferPool:Lcom/github/luben/zstd/BufferPool;
+
+    iget-object v2, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->dstByteBuffer:Ljava/nio/ByteBuffer;
+
+    invoke-interface {v0, v2}, Lcom/github/luben/zstd/BufferPool;->release(Ljava/nio/ByteBuffer;)V
+
+    .line 289
+    iget-wide v2, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->stream:J
+
+    invoke-static {v2, v3}, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->freeCStream(J)I
+
+    .line 290
+    throw v1
+.end method
+
+.method private native compressStream(J[BI[BI)I
+.end method
+
+.method private static native createCStream()J
+.end method
+
+.method private native endStream(J[BI)I
+.end method
+
+.method private native flushStream(J[BI)I
+.end method
+
+.method private static native freeCStream(J)I
+.end method
+
+.method public static native recommendedCOutSize()J
+.end method
+
+.method private native resetCStream(J)I
+.end method
+
+
+# virtual methods
+.method public declared-synchronized close()V
+    .locals 1
+
+    monitor-enter p0
+
+    .line 258
+    const/4 v0, 0x1
+
+    :try_start_0
+    invoke-direct {p0, v0}, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->close(Z)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 259
+    monitor-exit p0
+
+    return-void
+
+    .line 257
+    .end local p0    # "this":Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;
+    :catchall_0
+    move-exception v0
+
+    monitor-exit p0
+
+    throw v0
+.end method
+
+.method public declared-synchronized flush()V
+    .locals 6
+
+    monitor-enter p0
+
+    .line 226
+    :try_start_0
+    iget-boolean v0, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->isClosed:Z
+
+    if-nez v0, :cond_5
+
+    .line 229
+    iget-boolean v0, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->frameClosed:Z
+
+    if-nez v0, :cond_4
+
+    .line 230
+    iget-boolean v0, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->closeFrameOnFlush:Z
+
+    const/4 v1, 0x0
+
+    if-eqz v0, :cond_2
+
+    .line 234
+    :cond_0
+    iget-wide v2, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->stream:J
+
+    iget-object v0, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->dst:[B
+
+    sget v4, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->dstSize:I
+
+    invoke-direct {p0, v2, v3, v0, v4}, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->endStream(J[BI)I
+
+    move-result v0
+
+    .line 235
+    .local v0, "size":I
+    int-to-long v2, v0
+
+    invoke-static {v2, v3}, Lcom/github/luben/zstd/Zstd;->isError(J)Z
+
+    move-result v2
+
+    if-nez v2, :cond_1
+
+    .line 238
+    iget-object v2, p0, Ljava/io/FilterOutputStream;->out:Ljava/io/OutputStream;
+
+    iget-object v3, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->dst:[B
+
+    iget-wide v4, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->dstPos:J
+
+    long-to-int v4, v4
+
+    invoke-virtual {v2, v3, v1, v4}, Ljava/io/OutputStream;->write([BII)V
+
+    .line 239
+    if-gtz v0, :cond_0
+
+    .line 240
+    const/4 v1, 0x1
+
+    iput-boolean v1, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->frameClosed:Z
+
+    .line 241
+    .end local v0    # "size":I
+    goto :goto_0
+
+    .line 225
+    .end local p0    # "this":Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;
+    :catchall_0
+    move-exception v0
+
+    goto :goto_2
+
+    .line 236
+    .restart local v0    # "size":I
+    :cond_1
+    new-instance v1, Ljava/io/IOException;
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "Compression error: "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    int-to-long v3, v0
+
+    invoke-static {v3, v4}, Lcom/github/luben/zstd/Zstd;->getErrorName(J)Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-direct {v1, v2}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+
+    throw v1
+
+    .line 245
+    .end local v0    # "size":I
+    :cond_2
+    iget-wide v2, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->stream:J
+
+    iget-object v0, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->dst:[B
+
+    sget v4, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->dstSize:I
+
+    invoke-direct {p0, v2, v3, v0, v4}, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->flushStream(J[BI)I
+
+    move-result v0
+
+    .line 246
+    .restart local v0    # "size":I
+    int-to-long v2, v0
+
+    invoke-static {v2, v3}, Lcom/github/luben/zstd/Zstd;->isError(J)Z
+
+    move-result v2
+
+    if-nez v2, :cond_3
+
+    .line 249
+    iget-object v2, p0, Ljava/io/FilterOutputStream;->out:Ljava/io/OutputStream;
+
+    iget-object v3, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->dst:[B
+
+    iget-wide v4, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->dstPos:J
+
+    long-to-int v4, v4
+
+    invoke-virtual {v2, v3, v1, v4}, Ljava/io/OutputStream;->write([BII)V
+
+    .line 250
+    nop
+
+    nop
+
+    if-gtz v0, :cond_2
+
+    .line 252
+    .end local v0    # "size":I
+    :goto_0
+    iget-object v0, p0, Ljava/io/FilterOutputStream;->out:Ljava/io/OutputStream;
+
+    invoke-virtual {v0}, Ljava/io/OutputStream;->flush()V
+
+    goto :goto_1
+
+    .line 247
+    .restart local v0    # "size":I
+    :cond_3
+    new-instance v1, Ljava/io/IOException;
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "Compression error: "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    int-to-long v3, v0
+
+    invoke-static {v3, v4}, Lcom/github/luben/zstd/Zstd;->getErrorName(J)Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-direct {v1, v2}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+
+    throw v1
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 254
+    .end local v0    # "size":I
+    :cond_4
+    :goto_1
+    monitor-exit p0
+
+    return-void
+
+    .line 227
+    :cond_5
+    :try_start_1
+    new-instance v0, Ljava/io/IOException;
+
+    const-string v1, "Stream closed"
+
+    invoke-direct {v0, v1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    .line 225
+    :goto_2
+    monitor-exit p0
+
+    throw v0
+.end method
+
+.method public declared-synchronized setLevel(I)Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;
+    .locals 5
+    .param p1, "level"    # I
+
+    monitor-enter p0
+
+    .line 111
+    :try_start_0
+    iget-boolean v0, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->frameClosed:Z
+
+    if-eqz v0, :cond_1
+
+    .line 114
+    iget-wide v0, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->stream:J
+
+    invoke-static {v0, v1, p1}, Lcom/github/luben/zstd/Zstd;->setCompressionLevel(JI)I
+
+    move-result v0
+
+    .line 115
+    .local v0, "size":I
+    int-to-long v1, v0
+
+    invoke-static {v1, v2}, Lcom/github/luben/zstd/Zstd;->isError(J)Z
+
+    move-result v1
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    if-nez v1, :cond_0
+
+    .line 118
+    monitor-exit p0
+
+    return-object p0
+
+    .line 116
+    :cond_0
+    :try_start_1
+    new-instance v1, Ljava/io/IOException;
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "Compression param: "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    int-to-long v3, v0
+
+    invoke-static {v3, v4}, Lcom/github/luben/zstd/Zstd;->getErrorName(J)Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-direct {v1, v2}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+
+    throw v1
+
+    .line 110
+    .end local v0    # "size":I
+    .end local p0    # "this":Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;
+    .end local p1    # "level":I
+    :catchall_0
+    move-exception p1
+
+    goto :goto_0
+
+    .line 112
+    .restart local p1    # "level":I
+    :cond_1
+    new-instance v0, Ljava/io/IOException;
+
+    const-string v1, "Change of parameter on initialized stream"
+
+    invoke-direct {v0, v1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    .line 110
+    .end local p1    # "level":I
+    :goto_0
+    monitor-exit p0
+
+    throw p1
+.end method
+
+.method public write(I)V
+    .locals 4
+    .param p1, "i"    # I
+
+    .line 217
+    const/4 v0, 0x1
+
+    new-array v1, v0, [B
+
+    .line 218
+    .local v1, "oneByte":[B
+    int-to-byte v2, p1
+
+    const/4 v3, 0x0
+
+    aput-byte v2, v1, v3
+
+    .line 219
+    invoke-virtual {p0, v1, v3, v0}, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->write([BII)V
+
+    .line 220
+    return-void
+.end method
+
+.method public declared-synchronized write([BII)V
+    .locals 9
+    .param p1, "src"    # [B
+    .param p2, "offset"    # I
+    .param p3, "len"    # I
+
+    monitor-enter p0
+
+    .line 193
+    :try_start_0
+    iget-boolean v0, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->isClosed:Z
+
+    if-nez v0, :cond_5
+
+    .line 196
+    iget-boolean v0, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->frameClosed:Z
+
+    const/4 v1, 0x0
+
+    if-eqz v0, :cond_1
+
+    .line 197
+    iget-wide v2, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->stream:J
+
+    invoke-direct {p0, v2, v3}, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->resetCStream(J)I
+
+    move-result v0
+
+    .line 198
+    .local v0, "size":I
+    int-to-long v2, v0
+
+    invoke-static {v2, v3}, Lcom/github/luben/zstd/Zstd;->isError(J)Z
+
+    move-result v2
+
+    if-nez v2, :cond_0
+
+    .line 201
+    iput-boolean v1, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->frameClosed:Z
+
+    goto :goto_0
+
+    .line 192
+    .end local v0    # "size":I
+    .end local p0    # "this":Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;
+    .end local p1    # "src":[B
+    .end local p2    # "offset":I
+    .end local p3    # "len":I
+    :catchall_0
+    move-exception p1
+
+    goto/16 :goto_2
+
+    .line 199
+    .restart local v0    # "size":I
+    .restart local p1    # "src":[B
+    .restart local p2    # "offset":I
+    .restart local p3    # "len":I
+    :cond_0
+    new-instance v1, Ljava/io/IOException;
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "Compression error: cannot create header: "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    int-to-long v3, v0
+
+    invoke-static {v3, v4}, Lcom/github/luben/zstd/Zstd;->getErrorName(J)Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-direct {v1, v2}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+
+    throw v1
+
+    .line 203
+    .end local v0    # "size":I
+    :cond_1
+    :goto_0
+    add-int v0, p2, p3
+
+    .line 204
+    .local v0, "srcSize":I
+    int-to-long v2, p2
+
+    iput-wide v2, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->srcPos:J
+
+    .line 205
+    :goto_1
+    iget-wide v2, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->srcPos:J
+
+    int-to-long v4, v0
+
+    cmp-long v2, v2, v4
+
+    if-gez v2, :cond_4
+
+    .line 206
+    iget-wide v3, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->stream:J
+
+    iget-object v5, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->dst:[B
+
+    sget v6, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->dstSize:I
+
+    move-object v2, p0
+
+    move-object v7, p1
+
+    move v8, v0
+
+    invoke-direct/range {v2 .. v8}, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->compressStream(J[BI[BI)I
+
+    move-result v2
+
+    .line 207
+    .local v2, "size":I
+    int-to-long v3, v2
+
+    invoke-static {v3, v4}, Lcom/github/luben/zstd/Zstd;->isError(J)Z
+
+    move-result v3
+
+    if-nez v3, :cond_3
+
+    .line 210
+    iget-wide v3, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->dstPos:J
+
+    const-wide/16 v5, 0x0
+
+    cmp-long v3, v3, v5
+
+    if-lez v3, :cond_2
+
+    .line 211
+    iget-object v3, p0, Ljava/io/FilterOutputStream;->out:Ljava/io/OutputStream;
+
+    iget-object v4, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->dst:[B
+
+    iget-wide v5, p0, Lcom/github/luben/zstd/ZstdOutputStreamNoFinalizer;->dstPos:J
+
+    long-to-int v5, v5
+
+    invoke-virtual {v3, v4, v1, v5}, Ljava/io/OutputStream;->write([BII)V
+
+    .line 213
+    .end local v2    # "size":I
+    :cond_2
+    goto :goto_1
+
+    .line 208
+    .restart local v2    # "size":I
+    :cond_3
+    new-instance v1, Ljava/io/IOException;
+
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v4, "Compression error: "
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    int-to-long v4, v2
+
+    invoke-static {v4, v5}, Lcom/github/luben/zstd/Zstd;->getErrorName(J)Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-direct {v1, v3}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+
+    throw v1
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 214
+    .end local v2    # "size":I
+    :cond_4
+    monitor-exit p0
+
+    return-void
+
+    .line 194
+    .end local v0    # "srcSize":I
+    :cond_5
+    :try_start_1
+    new-instance v0, Ljava/io/IOException;
+
+    const-string v1, "Stream closed"
+
+    invoke-direct {v0, v1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    .line 192
+    .end local p1    # "src":[B
+    .end local p2    # "offset":I
+    .end local p3    # "len":I
+    :goto_2
+    monitor-exit p0
+
+    throw p1
+.end method

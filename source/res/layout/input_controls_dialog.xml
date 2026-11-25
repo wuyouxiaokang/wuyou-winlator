@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip">
+        <Spinner android:id="@id/SProfile" android:layout_width="330.0dip" style="@style/ComboBox" />
+        <ImageView android:id="@id/BTSettings" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="8.0dip" android:src="@drawable/icon_settings" app:tint="?colorPrimary" />
+    </LinearLayout>
+    <CheckBox android:id="@id/CBShowTouchscreenControls" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:text="@string/show_touchscreen_controls" />
+    <CheckBox android:id="@id/CBRelativeMouseMovement" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/relative_mouse_movement" />
+    <CheckBox android:id="@id/CBWlSnapToTouch" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/wl_snap_to_touch" />
+    <CheckBox android:id="@id/CBWlDirectMapping" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/direct_mapping" />
+</LinearLayout>

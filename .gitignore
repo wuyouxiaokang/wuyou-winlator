@@ -1,0 +1,6 @@
+*.apk
+*.keystore
+*.jks
+out/
+build/
+pack/
