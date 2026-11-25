@@ -13,9 +13,9 @@
             </LinearLayout>
         </LinearLayout>
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cursor_speed" />
-        <com.wuyouwin.widget.SeekBar android:id="@id/SBCursorSpeed" android:layout_width="fill_parent" android:layout_height="wrap_content" app:maxValue="250" app:minValue="10" app:suffix="%" />
+        <com.winlator.widget.SeekBar android:id="@id/SBCursorSpeed" android:layout_width="fill_parent" android:layout_height="wrap_content" app:maxValue="250" app:minValue="10" app:suffix="%" />
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/overlay_opacity" />
-        <com.wuyouwin.widget.SeekBar android:id="@id/SBOverlayOpacity" android:layout_width="fill_parent" android:layout_height="wrap_content" app:maxValue="100" app:minValue="10" app:step="5" app:suffix="%" />
+        <com.winlator.widget.SeekBar android:id="@id/SBOverlayOpacity" android:layout_width="fill_parent" android:layout_height="wrap_content" app:maxValue="100" app:minValue="10" app:step="5" app:suffix="%" />
         <CheckBox android:id="@id/CBDisableMouseInput" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/disable_mouse_input" />
         <View android:layout_marginTop="16.0dip" style="@style/HorizontalLine" />
         <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">

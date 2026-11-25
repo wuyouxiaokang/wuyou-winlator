@@ -12,6 +12,6 @@
                 <Spinner android:id="@id/SInstrument" android:layout_width="fill_parent" style="@style/ComboBox" />
             </LinearLayout>
         </LinearLayout>
-        <com.wuyouwin.widget.SimplePianoKeyboard android:id="@id/SimplePianoKeyboard" android:layout_width="fill_parent" android:layout_height="160.0dip" android:layout_marginTop="4.0dip" />
+        <com.winlator.widget.SimplePianoKeyboard android:id="@id/SimplePianoKeyboard" android:layout_width="fill_parent" android:layout_height="160.0dip" android:layout_marginTop="4.0dip" />
     </LinearLayout>
 </LinearLayout>

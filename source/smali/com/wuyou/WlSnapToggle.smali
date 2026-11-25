@@ -46,7 +46,7 @@
 
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V
 
-    sput-boolean p2, Lcom/wuyouwin/widget/InputControlsView;->wlSnapEnabled:Z
+    sput-boolean p2, Lcom/winlator/widget/InputControlsView;->wlSnapEnabled:Z
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 

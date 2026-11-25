@@ -25,7 +25,7 @@
     return-void
 .end method
 
-.method public constructor <init>(Lcom/wuyouwin/XServerDisplayActivity;)V
+.method public constructor <init>(Lcom/winlator/XServerDisplayActivity;)V
     .locals 1
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -50,7 +50,7 @@
 
     move-result-object v0
 
-    check-cast v0, Lcom/wuyouwin/XServerDisplayActivity;
+    check-cast v0, Lcom/winlator/XServerDisplayActivity;
 
     if-nez v0, :cond_0
 
@@ -72,7 +72,7 @@
     invoke-virtual {p1, v2}, Landroid/view/View;->setContentDescription(Ljava/lang/CharSequence;)V
 
     :cond_a
-    invoke-virtual {v0}, Lcom/wuyouwin/XServerDisplayActivity;->wlShowKeyboard()V
+    invoke-virtual {v0}, Lcom/winlator/XServerDisplayActivity;->wlShowKeyboard()V
 
     return-void
 

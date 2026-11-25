@@ -37,14 +37,14 @@
 
     move-result-object v0
 
-    check-cast v0, Lcom/wuyouwin/XServerDisplayActivity;
+    check-cast v0, Lcom/winlator/XServerDisplayActivity;
 
     if-nez v0, :cond_0
 
     return-void
 
     :cond_0
-    invoke-virtual {v0}, Lcom/wuyouwin/XServerDisplayActivity;->wlShowKeyboard()V
+    invoke-virtual {v0}, Lcom/winlator/XServerDisplayActivity;->wlShowKeyboard()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 

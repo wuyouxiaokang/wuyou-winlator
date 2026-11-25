@@ -17,7 +17,7 @@
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/resource_memory_type" />
         <Spinner android:entries="@array/resource_memory_type_entries" android:id="@id/SResourceMemoryType" android:layout_width="fill_parent" style="@style/ComboBox" />
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/exposed_extensions" />
-        <com.wuyouwin.widget.MultiSelectionComboBox android:id="@id/MSCBExposedExtensions" android:layout_width="fill_parent" style="@style/ComboBox" />
+        <com.winlator.widget.MultiSelectionComboBox android:id="@id/MSCBExposedExtensions" android:layout_width="fill_parent" style="@style/ComboBox" />
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/image_cache_size" />
         <Spinner android:entries="@array/image_cache_size_entries" android:id="@id/SImageCacheSize" android:layout_width="fill_parent" style="@style/ComboBox" />
     </LinearLayout>

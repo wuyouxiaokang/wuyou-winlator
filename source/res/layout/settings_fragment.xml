@@ -6,15 +6,15 @@
             <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
                 <LinearLayout style="@style/FieldSet">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cursor_speed" />
-                    <com.wuyouwin.widget.SeekBar android:id="@id/SBCursorSpeed" android:layout_width="fill_parent" android:layout_height="wrap_content" app:maxValue="200" app:minValue="10" app:suffix="%" />
+                    <com.winlator.widget.SeekBar android:id="@id/SBCursorSpeed" android:layout_width="fill_parent" android:layout_height="wrap_content" app:maxValue="200" app:minValue="10" app:suffix="%" />
                     <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
                         <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
                             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cursor_size" />
-                            <com.wuyouwin.widget.SeekBar android:id="@id/SBCursorSize" android:layout_width="fill_parent" android:layout_height="wrap_content" app:maxValue="200" app:minValue="100" app:step="5" app:suffix="%" />
+                            <com.winlator.widget.SeekBar android:id="@id/SBCursorSize" android:layout_width="fill_parent" android:layout_height="wrap_content" app:maxValue="200" app:minValue="100" app:step="5" app:suffix="%" />
                         </LinearLayout>
                         <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip">
                             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/color" />
-                            <com.wuyouwin.widget.ColorPickerView android:id="@id/CPVCursorColor" android:layout_width="84.0dip" android:layout_height="wrap_content" />
+                            <com.winlator.widget.ColorPickerView android:id="@id/CPVCursorColor" android:layout_width="84.0dip" android:layout_height="wrap_content" />
                         </LinearLayout>
                     </LinearLayout>
                     <View style="@style/FieldSeparator" />

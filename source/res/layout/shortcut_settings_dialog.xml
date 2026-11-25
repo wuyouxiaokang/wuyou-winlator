@@ -52,7 +52,7 @@
             </FrameLayout>
         </LinearLayout>
         <LinearLayout android:orientation="vertical" android:id="@id/LLTabEnvVars" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <com.wuyouwin.widget.EnvVarsView android:id="@id/EnvVarsView" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <com.winlator.widget.EnvVarsView android:id="@id/EnvVarsView" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
             <View style="@style/HorizontalLine" />
             <Button android:layout_gravity="center_horizontal" android:id="@id/BTAddEnvVar" android:layout_width="160.0dip" android:layout_height="wrap_content" android:text="@string/add" style="@style/ButtonNeutral" />
         </LinearLayout>

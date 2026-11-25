@@ -9,9 +9,9 @@
             <Spinner android:id="@id/SShape" android:layout_width="fill_parent" style="@style/ComboBox" />
         </LinearLayout>
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/scale" />
-        <com.wuyouwin.widget.SeekBar android:id="@id/SBScale" android:layout_width="fill_parent" android:layout_height="wrap_content" app:maxValue="300" app:minValue="50" app:step="5" app:suffix="%" />
+        <com.winlator.widget.SeekBar android:id="@id/SBScale" android:layout_width="fill_parent" android:layout_height="wrap_content" app:maxValue="300" app:minValue="50" app:step="5" app:suffix="%" />
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/opacity" />
-        <com.wuyouwin.widget.SeekBar android:id="@id/SBOpacity" android:layout_width="fill_parent" android:layout_height="wrap_content" app:maxValue="100" app:minValue="0" app:step="5" app:suffix="%" />
+        <com.winlator.widget.SeekBar android:id="@id/SBOpacity" android:layout_width="fill_parent" android:layout_height="wrap_content" app:maxValue="100" app:minValue="0" app:step="5" app:suffix="%" />
         <LinearLayout android:orientation="vertical" android:id="@id/LLRangeOptions" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/range" />
             <Spinner android:id="@id/SRange" android:layout_width="fill_parent" style="@style/ComboBox" />
@@ -21,7 +21,7 @@
                 <RadioButton android:id="@id/RBVertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/vertical" />
             </RadioGroup>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/columns" />
-            <com.wuyouwin.widget.NumberPicker android:id="@id/NPColumns" android:layout_width="fill_parent" android:layout_height="wrap_content" app:maxValue="8" app:minValue="3" />
+            <com.winlator.widget.NumberPicker android:id="@id/NPColumns" android:layout_width="fill_parent" android:layout_height="wrap_content" app:maxValue="8" app:minValue="3" />
         </LinearLayout>
         <LinearLayout android:orientation="vertical" android:id="@id/LLMIDIKeyOptions" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/note" />
@@ -29,7 +29,7 @@
         </LinearLayout>
         <LinearLayout android:orientation="vertical" android:id="@id/LLRadialMenuOptions" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bindings" />
-            <com.wuyouwin.widget.NumberPicker android:id="@id/NPBindings" android:layout_width="fill_parent" android:layout_height="wrap_content" app:maxValue="6" app:minValue="3" />
+            <com.winlator.widget.NumberPicker android:id="@id/NPBindings" android:layout_width="fill_parent" android:layout_height="wrap_content" app:maxValue="6" app:minValue="3" />
         </LinearLayout>
         <LinearLayout android:orientation="vertical" android:id="@id/LLBindings" android:layout_width="fill_parent" android:layout_height="wrap_content" />
         <CheckBox android:id="@id/CBToggleSwitch" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/toggle_switch" />

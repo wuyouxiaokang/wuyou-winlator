@@ -12,7 +12,7 @@
     return-void
 .end method
 
-.method public static force(Lcom/wuyouwin/core/EnvVars;)V
+.method public static force(Lcom/winlator/core/EnvVars;)V
     .locals 2
 
     if-nez p0, :cond_0
@@ -24,17 +24,17 @@
 
     const-string v1, "LC_ALL"
 
-    invoke-virtual {p0, v1, v0}, Lcom/wuyouwin/core/EnvVars;->put(Ljava/lang/String;Ljava/lang/Object;)Lcom/wuyouwin/core/EnvVars;
+    invoke-virtual {p0, v1, v0}, Lcom/winlator/core/EnvVars;->put(Ljava/lang/String;Ljava/lang/Object;)Lcom/winlator/core/EnvVars;
 
     const-string v1, "LANG"
 
-    invoke-virtual {p0, v1, v0}, Lcom/wuyouwin/core/EnvVars;->put(Ljava/lang/String;Ljava/lang/Object;)Lcom/wuyouwin/core/EnvVars;
+    invoke-virtual {p0, v1, v0}, Lcom/winlator/core/EnvVars;->put(Ljava/lang/String;Ljava/lang/Object;)Lcom/winlator/core/EnvVars;
 
     const-string v1, "LANGUAGE"
 
     const-string v0, "zh_CN"
 
-    invoke-virtual {p0, v1, v0}, Lcom/wuyouwin/core/EnvVars;->put(Ljava/lang/String;Ljava/lang/Object;)Lcom/wuyouwin/core/EnvVars;
+    invoke-virtual {p0, v1, v0}, Lcom/winlator/core/EnvVars;->put(Ljava/lang/String;Ljava/lang/Object;)Lcom/winlator/core/EnvVars;
 
     return-void
 .end method

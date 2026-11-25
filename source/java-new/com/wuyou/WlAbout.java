@@ -216,7 +216,7 @@ public final class WlAbout {
             if (f != null) return f.getAbsolutePath();
         }
         catch (Throwable ignored) {}
-        return "/sdcard/Android/data/com.wuyouwin/files";
+        return "/sdcard/Android/data/com.winlator/files";
     }
 
     /** AlertDialog 的消息 TextView 是私有的，通过 id 查找。 */

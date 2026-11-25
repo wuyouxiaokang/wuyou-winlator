@@ -12,7 +12,7 @@
     return-void
 .end method
 
-.method public static create(Landroid/content/Context;Lcom/wuyouwin/container/Container;)V
+.method public static create(Landroid/content/Context;Lcom/winlator/container/Container;)V
     .locals 4
 
     if-nez p1, :cond_0
@@ -21,7 +21,7 @@
 
     :cond_0
     :try_start_0
-    invoke-virtual {p1}, Lcom/wuyouwin/container/Container;->getRootDir()Ljava/io/File;
+    invoke-virtual {p1}, Lcom/winlator/container/Container;->getRootDir()Ljava/io/File;
 
     move-result-object v0
 
@@ -168,17 +168,17 @@
 
     invoke-direct {v2, p0, v1}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
 
-    new-instance v0, Lcom/wuyouwin/win32/MSLink$LinkInfo;
+    new-instance v0, Lcom/winlator/win32/MSLink$LinkInfo;
 
-    invoke-direct {v0}, Lcom/wuyouwin/win32/MSLink$LinkInfo;-><init>()V
+    invoke-direct {v0}, Lcom/winlator/win32/MSLink$LinkInfo;-><init>()V
 
-    iput-object p2, v0, Lcom/wuyouwin/win32/MSLink$LinkInfo;->targetPath:Ljava/lang/String;
+    iput-object p2, v0, Lcom/winlator/win32/MSLink$LinkInfo;->targetPath:Ljava/lang/String;
 
-    iput-object p3, v0, Lcom/wuyouwin/win32/MSLink$LinkInfo;->arguments:Ljava/lang/String;
+    iput-object p3, v0, Lcom/winlator/win32/MSLink$LinkInfo;->arguments:Ljava/lang/String;
 
-    iput-object p2, v0, Lcom/wuyouwin/win32/MSLink$LinkInfo;->iconLocation:Ljava/lang/String;
+    iput-object p2, v0, Lcom/winlator/win32/MSLink$LinkInfo;->iconLocation:Ljava/lang/String;
 
-    invoke-static {v0, v2}, Lcom/wuyouwin/win32/MSLink;->createFile(Lcom/wuyouwin/win32/MSLink$LinkInfo;Ljava/io/File;)Z
+    invoke-static {v0, v2}, Lcom/winlator/win32/MSLink;->createFile(Lcom/winlator/win32/MSLink$LinkInfo;Ljava/io/File;)Z
 
     return-void
 .end method

@@ -17,7 +17,7 @@
 | 本项目许可证 | **LGPL-2.1**（与上游一致，见 [LICENSE](LICENSE)） |
 | 原始版权 | Copyright (c) BrunoSX / brunodev85 及其贡献者 |
 | 修改者 | wuyouxiaokang &lt;3266636647@qq.com&gt; |
-| 包名 | `com.wuyouwin`（已从 `com.winlator` 迁移，避免与上游冲突） |
+| 包名 | `com.winlator`（暂与上游一致；独立包名的迁移因 native 层硬编码问题暂缓） |
 | 修改日期 | 2026-11-25 起 |
 
 ### 我们履行的 LGPL-2.1 义务
@@ -119,7 +119,7 @@
 
 - 邮箱：**3266636647@qq.com**
 - 提交 Issue 时请附上日志：
-  - 崩溃日志：`/sdcard/Android/data/com.wuyouwin/files/wuyou-crash.txt`
+  - 崩溃日志：`/sdcard/Android/data/com.winlator/files/wuyou-crash.txt`
   - 键盘诊断：`/sdcard/Download/wuyou_send.txt`、`wuyou_inject.txt`
 
 ---

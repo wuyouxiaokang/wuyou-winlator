@@ -58,9 +58,9 @@
     return-void
 .end method
 
-.method public static show(Lcom/wuyouwin/XServerDisplayActivity;)V
+.method public static show(Lcom/winlator/XServerDisplayActivity;)V
     .locals 6
-    .param p0, "activity"    # Lcom/wuyouwin/XServerDisplayActivity;
+    .param p0, "activity"    # Lcom/winlator/XServerDisplayActivity;
 
     if-nez p0, :cond_0
 
@@ -92,7 +92,7 @@
 
     new-instance v1, Lcom/wuyou/WlKeyboardPrompt$$Yes;
 
-    invoke-direct {v1, p0}, Lcom/wuyou/WlKeyboardPrompt$$Yes;-><init>(Lcom/wuyouwin/XServerDisplayActivity;)V
+    invoke-direct {v1, p0}, Lcom/wuyou/WlKeyboardPrompt$$Yes;-><init>(Lcom/winlator/XServerDisplayActivity;)V
 
     const-string v2, "调出键盘"
 

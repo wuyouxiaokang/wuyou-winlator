@@ -6,7 +6,7 @@ import android.os.IBinder;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
-import com.wuyouwin.XServerDisplayActivity;
+import com.winlator.XServerDisplayActivity;
 
 /**
  * 键盘显隐助手（Java 实现，避免手写 smali 的寄存器/签名错误）。

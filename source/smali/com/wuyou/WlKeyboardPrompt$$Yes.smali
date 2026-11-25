@@ -7,16 +7,16 @@
 
 
 # instance fields
-.field private final activity:Lcom/wuyouwin/XServerDisplayActivity;
+.field private final activity:Lcom/winlator/XServerDisplayActivity;
 
 
 # direct methods
-.method public constructor <init>(Lcom/wuyouwin/XServerDisplayActivity;)V
+.method public constructor <init>(Lcom/winlator/XServerDisplayActivity;)V
     .locals 0
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    iput-object p1, p0, Lcom/wuyou/WlKeyboardPrompt$$Yes;->activity:Lcom/wuyouwin/XServerDisplayActivity;
+    iput-object p1, p0, Lcom/wuyou/WlKeyboardPrompt$$Yes;->activity:Lcom/winlator/XServerDisplayActivity;
 
     return-void
 .end method
@@ -30,7 +30,7 @@
 
     sput-boolean v0, Lcom/wuyou/WlKeyboardPrompt;->wlShowing:Z
 
-    iget-object v1, p0, Lcom/wuyou/WlKeyboardPrompt$$Yes;->activity:Lcom/wuyouwin/XServerDisplayActivity;
+    iget-object v1, p0, Lcom/wuyou/WlKeyboardPrompt$$Yes;->activity:Lcom/winlator/XServerDisplayActivity;
 
     if-nez v1, :cond_0
 
@@ -47,9 +47,9 @@
 
     new-instance v2, Lcom/wuyou/WlKeyboardPrompt$$ShowKb;
 
-    iget-object v3, p0, Lcom/wuyou/WlKeyboardPrompt$$Yes;->activity:Lcom/wuyouwin/XServerDisplayActivity;
+    iget-object v3, p0, Lcom/wuyou/WlKeyboardPrompt$$Yes;->activity:Lcom/winlator/XServerDisplayActivity;
 
-    invoke-direct {v2, v3}, Lcom/wuyou/WlKeyboardPrompt$$ShowKb;-><init>(Lcom/wuyouwin/XServerDisplayActivity;)V
+    invoke-direct {v2, v3}, Lcom/wuyou/WlKeyboardPrompt$$ShowKb;-><init>(Lcom/winlator/XServerDisplayActivity;)V
 
     const-wide/16 v3, 0x96
 

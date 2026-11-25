@@ -4,7 +4,7 @@
     <TextView android:id="@id/TextView" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxLines="1" android:layout_weight="1.0" />
     <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="100.0dip" android:layout_height="42.0dip">
         <Spinner android:id="@id/Spinner" android:visibility="gone" android:layout_width="fill_parent" style="@style/ComboBox" />
-        <com.wuyouwin.widget.MultiSelectionComboBox android:id="@id/MultiSelectionComboBox" android:visibility="gone" android:layout_width="fill_parent" style="@style/MultiSelectionComboBox" />
+        <com.winlator.widget.MultiSelectionComboBox android:id="@id/MultiSelectionComboBox" android:visibility="gone" android:layout_width="fill_parent" style="@style/MultiSelectionComboBox" />
         <ToggleButton android:id="@id/ToggleButton" android:background="@drawable/toggle_button_selector" android:visibility="gone" android:layout_width="64.0dip" android:layout_height="32.0dip" android:textOn="" android:textOff="" />
         <EditText android:id="@id/EditText" android:visibility="gone" android:layout_width="fill_parent" style="@style/EditText" />
     </LinearLayout>
